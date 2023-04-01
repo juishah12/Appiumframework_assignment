@@ -10,6 +10,13 @@ class TestAndroidDeviceLocal(AppiumConfig):
     # def test_invalid_login(self):
     #     print(self.driver.page_source)
     #     time.sleep(2)
+    def test_mobile_form(self):
+        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'UiSelector().text("CONTACT US FORM")').click()
+        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'UiSelector().text("Enter Name")').send_keys('jui')
+        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'UiSelector().text("Enter Email")').send_keys('jui@gmail.com')
+        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'UiSelector().text("Enter Address")').send_keys('Ahmedabad')
+        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'UiSelector().text("Enter Mobile No")').send_keys('9898167678')
+        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'UiSelector().text("SUBMIT")').click()
 
     def test_valid_login(self):
         #Enter valid login and print admin name
@@ -17,8 +24,8 @@ class TestAndroidDeviceLocal(AppiumConfig):
         self.driver.find_element(AppiumBy.XPATH,"//android.widget.EditText[@text='Enter Email']").send_keys("admin@gmail.com")
         self.driver.find_element(AppiumBy.XPATH, "//android.widget.EditText[@text='Enter Password']").send_keys("admin123")
         self.driver.find_element(AppiumBy.XPATH,"//android.widget.Button[@text='LOGIN']").click()
-        # self.driver.find_element(AppiumBy.XPATH,"//android.widget.EditText[@text,'Enter Admin']").send_keys("Masteradmin")
-        # self.driver.find_element(AppiumBy.XPATH,"//android.widget.Button[@text='SUBMIT']").click()
+        self.driver.find_element(AppiumBy.XPATH,"//android.widget.EditText[@text,'Enter Admin']").send_keys("Masteradmin")
+        self.driver.find_element(AppiumBy.XPATH,"//android.widget.Button[@text='SUBMIT']").click()
         actual_admin = self.driver.find_element(AppiumBy.XPATH, "//android.widget.TextView[@resource-id='com.code2lead.kwad:id/Tv_admin']").text
         print(actual_admin)
 
@@ -41,10 +48,4 @@ class TestAndroidDeviceLocal(AppiumConfig):
         self.driver.find_element(AppiumBy.XPATH,"//android.widget.Button[@text='SUBMIT']").click()
         time.sleep(5)
 
-    def mobile_command(self):
-        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'UiSelector().text("CONTACT US FORM")').click()
-        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'UiSelector().text("Enter Name")').send_keys('jui')
-        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'UiSelector().text("Enter Email")').send_keys('jui@gmail.com')
-        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'UiSelector().text("Enter Address")').send_keys('Ahmedabad')
-        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'UiSelector().text("Enter Mobile No")').send_keys('9898167678')
-        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'UiSelector().text("SUBMIT")').click()
+
